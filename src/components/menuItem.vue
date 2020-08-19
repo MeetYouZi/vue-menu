@@ -1,110 +1,40 @@
 <template>
-
-<!--  <ul class="menubar">-->
-    <li class="submenu"
-        @click.stop="handleSubmenuClick(menu)"
-    >
-      <div class="submenu-title">
-        <p>{{ menu.title }}</p>
-        <div class="iconArrow" :class="{'collapse': !collapse}">
-          >
+  <li class="submenu"
+      @click.stop="handleSubmenuClick(menu)"
+  >
+    <div class="submenu-title">
+      <p>{{ menu.title }}</p>
+      <div class="iconArrow" :class="{'collapse': !collapse}">
+        >
 <!--          <img src="../../assets/images/iconDown@2x.png"/>-->
-        </div>
       </div>
-      <transition
-        name="collapse"
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @before-leave="beforeLeave"
-        @after-enter="afterEnter"
-        @leave="leave"
-      >
+    </div>
+    <transition
+      name="collapse"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @before-leave="beforeLeave"
+      @after-enter="afterEnter"
+      @leave="leave"
+    >
       <div class="menuList"
            :class="{'menu-collapse': collapse}"
            ref="menuList"
-           v-show="isShow"
+           v-show="collapse"
       >
-        <transition name="menu-collapse" @enter="enter">
-
         <ul class="menu" ref="menu">
             <slot></slot>
         </ul>
-        </transition>
-
-        <!--        <ul class="menu"-->
-<!--            ref="menu"-->
-<!--        >-->
-<!--          <li class="menu-item-group"-->
-<!--              ref="menuGroupList"-->
-<!--          >-->
-<!--            <slot></slot>-->
-<!--          </li>-->
-<!--        </ul>-->
       </div>
-      </transition>
-    </li>
-<!--  </ul>-->
-
+    </transition>
+  </li>
 </template>
 
 <script>
-// import { addClass, removeClass, hasClass } from '../utils/dom'
 
 export default {
   name: 'menuItem',
-  components: {
-    // 'el-menu-collapse-transition': {
-    //   functional: true,
-    //   render (createElement, context) {
-    //     const data = {
-    //       props: {
-    //         mode: 'out-in'
-    //       },
-    //       on: {
-    //         beforeEnter (el) {
-    //           el.style.opacity = 0.2
-    //         },
-    //
-    //         enter (el) {
-    //           console.log(el, '')
-    //           addClass(el, 'el-opacity-transition')
-    //           el.style.opacity = 1
-    //         },
-    //
-    //         afterEnter (el) {
-    //           removeClass(el, 'el-opacity-transition')
-    //           el.style.opacity = ''
-    //         },
-    //
-    //         beforeLeave (el) {
-    //           if (!el.dataset) el.dataset = {}
-    //
-    //           if (hasClass(el, 'el-menu--collapse')) {
-    //             removeClass(el, 'el-menu--collapse')
-    //             el.dataset.oldOverflow = el.style.overflow
-    //             el.dataset.scrollWidth = el.clientWidth
-    //             addClass(el, 'el-menu--collapse')
-    //           } else {
-    //             addClass(el, 'el-menu--collapse')
-    //             el.dataset.oldOverflow = el.style.overflow
-    //             el.dataset.scrollWidth = el.clientWidth
-    //             removeClass(el, 'el-menu--collapse')
-    //           }
-    //
-    //           el.style.width = el.scrollWidth + 'px'
-    //           el.style.overflow = 'hidden'
-    //         },
-    //
-    //         leave (el) {
-    //           addClass(el, 'horizontal-collapse-transition')
-    //           el.style.width = el.dataset.scrollWidth + 'px'
-    //         }
-    //       }
-    //     }
-    //     return createElement('transition', data, context.children)
-    //   }
-    // }
-  },
+  components: {},
   props: {
     menu: {
       type: Object
@@ -112,7 +42,6 @@ export default {
   },
   data () {
     return {
-      isShow: false,
       collapse: true,
       openedMenus: [],
       clientHeight: ''
@@ -170,13 +99,10 @@ export default {
       const isOpened = this.openedMenus.indexOf(index) !== -1
       this.clientHeight = this.$refs.menu.clientHeight
       this.collapse = !this.collapse
-      this.isShow = !this.isShow
       if (isOpened) {
         this.closeMenu(index)
-        // this.$refs.menuList.style.display = 'none'
       } else {
         this.openMenu(index)
-        // this.$refs.menuList.style.display = 'block'
       }
     },
     openMenu (index) {

@@ -254,16 +254,10 @@ export default {
       padding: 0 12px 0 25px;
       cursor: pointer;
       position: relative;
-      //transition: border-color .3s,background-color .3s,color .3s;
-      //transition-property: border-color, background-color, color;
-      //transition-duration: 0.3s, 0.3s, 0.3s;
-      //transition-timing-function: ease, ease, ease;
-      //transition-delay: 0s, 0s, 0s;
       box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      // @include border-bottom-1px(#eeeeee);
 
       .iconArrow {
         width: 24px;
