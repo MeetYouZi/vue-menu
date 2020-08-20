@@ -29,7 +29,7 @@
 <script>
 import menuItem from './menuItem'
 export default {
-  name: 'menu',
+  name: 'Menu',
   components: {
     menuItem
   },
