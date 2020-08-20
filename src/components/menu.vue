@@ -15,7 +15,7 @@
                 v-for="children in item.children"
                 :menu="children"
                 :key="children.index">
-                <div>111</div>
+                <div>子菜单</div>
               </menu-item>
 <!--              <menu-item :menu="item.children"></menu-item>-->
             </menu-item>
