@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import wCollapseTransition from "mAssets/transitions/collapse-transition"
+import wCollapseTransition from '../../assets/transitions/collapse-transition'
 
 export default {
-  name: "collapse",
+  name: 'collapse',
   components: {
     wCollapseTransition
   },
@@ -35,7 +35,7 @@ export default {
   },
   data () {
     return {
-      isActive: false,
+      isActive: false
     }
   },
   computed: {
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     handleHeaderClick () {
-      this.isActive = !this.isActive;
+      this.isActive = !this.isActive
     }
   }
 }

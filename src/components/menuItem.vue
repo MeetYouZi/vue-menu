@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import CollapseTransition from "../assets/transitions/collapse-transition"
+import CollapseTransition from '../assets/transitions/collapse-transition'
 
 export default {
   name: 'menuItem',
@@ -107,7 +107,7 @@ export default {
     align-items: center;
     transition: all .3s;
     &.collapse {
-      transform: rotate(180deg);
+      transform: rotate(90deg);
     }
     img {
       width: 24px;

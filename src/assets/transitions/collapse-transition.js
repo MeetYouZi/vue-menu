@@ -1,4 +1,4 @@
-import { addClass, removeClass } from 'mAssets/js/dom'
+import { addClass, removeClass } from '../../utils/dom'
 
 const Transition = {
   beforeEnter (el) {
