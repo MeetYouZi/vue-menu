@@ -9,14 +9,7 @@
 <!--          <img src="../../assets/images/iconDown@2x.png"/>-->
       </div>
     </div>
-    <transition
-      name="collapse"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @before-leave="beforeLeave"
-      @after-enter="afterEnter"
-      @leave="leave"
-    >
+    <collapse-transition>
       <div class="menuList"
            :class="{'menu-collapse': collapse}"
            ref="menuList"
@@ -26,15 +19,18 @@
             <slot></slot>
         </ul>
       </div>
-    </transition>
+    </collapse-transition>
   </li>
 </template>
 
 <script>
+import CollapseTransition from "../assets/transitions/collapse-transition"
 
 export default {
   name: 'menuItem',
-  components: {},
+  components: {
+    CollapseTransition
+  },
   props: {
     menu: {
       type: Object
@@ -48,52 +44,6 @@ export default {
     }
   },
   methods: {
-    beforeEnter (el) {
-      console.log('beforeEnter')
-      el.dataset.oldPaddingTop = el.style.paddingTop
-      el.dataset.oldPaddingBottom = el.style.paddingBottom
-
-      el.style.height = '0'
-      el.style.paddingTop = 0
-      el.style.paddingBottom = 0
-    },
-    enter (el) {
-      el.dataset.oldOverflow = el.style.overflow
-      if (el.scrollHeight !== 0) {
-        el.style.height = el.scrollHeight + 'px'
-        el.style.paddingTop = el.dataset.oldPaddingTop
-        el.style.paddingBottom = el.dataset.oldPaddingBottom
-      } else {
-        el.style.height = ''
-        el.style.paddingTop = el.dataset.oldPaddingTop
-        el.style.paddingBottom = el.dataset.oldPaddingBottom
-      }
-
-      el.style.overflow = 'hidden'
-      console.log('enter')
-    },
-    afterEnter (el) {
-      el.style.height = ''
-      console.log('afterEnter')
-    },
-    beforeLeave (el) {
-      if (!el.dataset) el.dataset = {}
-      el.dataset.oldPaddingTop = el.style.paddingTop
-      el.dataset.oldPaddingBottom = el.style.paddingBottom
-      el.dataset.oldOverflow = el.style.overflow
-
-      el.style.height = el.scrollHeight + 'px'
-      el.style.overflow = 'hidden'
-      console.log('beforeLeave')
-    },
-    leave (el) {
-      if (el.scrollHeight !== 0) {
-        // for safari: add class after set height, or it will jump to zero height suddenly, weired
-        el.style.height = 0
-        el.style.paddingTop = 0
-        el.style.paddingBottom = 0
-      }
-    },
     handleSubmenuClick (submenu) {
       const { index } = submenu
       const isOpened = this.openedMenus.indexOf(index) !== -1
