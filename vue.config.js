@@ -14,28 +14,13 @@ module.exports = {
       .set('@', resolve('src'))
       .set('style', resolve('src/assets/style'))
       .set('components', resolve('src/components'))
-    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
-    types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
+  },
+  // 自动化导入
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: '@import "~@/assets/style/variables.scss";@import "~@/assets/style/mixin.scss";'
+      }
+    }
   }
 }
-
-function addStyleResource (rule) {
-  rule.use('style-resource')
-    .loader('style-resources-loader')
-    .options({
-      patterns: [
-        path.resolve(__dirname, './src/assets/style/variables.scss')
-      ]
-    })
-}
-// // 自动化导入
-// pluginOptions: {
-//   'style-resources-loader': {
-//     preProcessor: 'scss',
-//     patterns: [
-//       resolve('src/assets/style/variables.scss'),
-//       resolve('src/assets/style/mixin.scss')
-//     ]
-//   }
-// }
-// }

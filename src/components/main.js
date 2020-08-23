@@ -1,8 +1,8 @@
 import mMenuItem from './menuItem'
 
-// 这里是重点
 const menuItem = {
   install: function (Vue) {
+    // 注册组件，传入一个选项对象 (自动调用 Vue.extend)
     Vue.component('vHeader', mMenuItem)
   }
 }
