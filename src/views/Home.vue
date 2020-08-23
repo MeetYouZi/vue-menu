@@ -21,3 +21,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+.home {
+  font-size: $font-size-medium;
+  @include font-weight500
+}
+</style>

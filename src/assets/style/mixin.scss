@@ -1,0 +1,91 @@
+@mixin no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin no-wrap-number($nummber) {
+  overflow: hidden;
+  -webkit-line-clamp: $nummber;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+}
+
+@mixin font-weight500 {
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+}
+
+@mixin font-weight600 {
+  font-family: PingFangSC, PingFangSC-Semibold;
+  font-weight: 600;
+}
+
+@mixin buttonMixins ($width, $height, $font-size: 11px) {
+  width: $width;
+  height: $height;
+  line-height: $height;
+  background: linear-gradient(270deg,#f0762b, #ef5e17);
+  border-radius: $width / 2;
+  font-size: $font-size;
+  color: #ffffff;
+}
+
+@mixin border-1px($color: #ccc, $radius: 2PX, $style: solid) {
+  position: relative;
+  &::after {
+    content: "";
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    border: 1PX $style $color;
+    border-radius: $radius;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    @media (min-resolution: 2dppx) {
+      width: 200%;
+      height: 200%;
+      border-radius: $radius * 2;
+      transform: scale(.5);
+    }
+    @media (min-resolution: 3dppx) {
+      width: 300%;
+      height: 300%;
+      border-radius: $radius * 3;
+      transform: scale(.333);
+    }
+  }
+}
+
+@mixin border-bottom-1px($color: #ccc, $radius: 2PX, $style: solid) {
+  position: relative;
+  &::after {
+    content: "";
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    border-bottom: 1PX $style $color;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    @media (min-resolution: 2dppx) {
+      width: 200%;
+      height: 200%;
+      transform: scale(.5);
+    }
+    @media (min-resolution: 3dppx) {
+      width: 300%;
+      height: 300%;
+      transform: scale(.333);
+    }
+  }
+}
