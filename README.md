@@ -1,16 +1,13 @@
-# menu
+# 组件库说明书
 
-## Project setup
-```
-npm install
-```
+## 本组件库纯属个人练手编写
 
-### Compiles and hot-reloads for development
+### menu 组件
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### collapse 手风琴组件
 ```
 
 npm run build

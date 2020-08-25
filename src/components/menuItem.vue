@@ -5,7 +5,7 @@
     <div class="submenu-title">
       <p>{{ menu.title }}</p>
       <div class="iconArrow" :class="{'collapse': !collapse}">
-        >
+        <i class="iconfont icon-Icon_right"></i>
 <!--          <img src="../../assets/images/iconDown@2x.png"/>-->
       </div>
     </div>
@@ -38,7 +38,7 @@ export default {
   },
   data () {
     return {
-      collapse: true,
+      collapse: false,
       openedMenus: [],
       clientHeight: ''
     }
