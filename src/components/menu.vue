@@ -4,7 +4,7 @@
       <div class="vMenu-mask" v-show="fullScreen" @click="handleShow">
         <transition name="menubar">
           <ul class="menubar-vertical" v-show="fullScreen">
-            // 测试测试测试
+            // 测试测试测试斤斤计较斤斤计较
             <menu-item
               v-for="item in list"
               :menu="item"
